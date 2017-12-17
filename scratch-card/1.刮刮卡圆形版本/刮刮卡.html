@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+		
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html,body{
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap{
+				height: 100%;
+				overflow: hidden;
+			}
+			.wrap ul{
+				height: 100%;
+			}
+			.wrap ul li {
+				height: 100%;
+				background: url(img/b.png) no-repeat;
+				background-size: 100% 100%;
+			}
+			.wrap >canvas{
+				position: absolute;
+				left: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<canvas></canvas>
+			<ul>
+				<li></li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oc = document.querySelector('canvas')
+		oc.width = document.documentElement.clientWidth;
+		oc.height = document.documentElement.clientHeight;
+		
+		
+		if(oc.getContext){
+				var ctx = oc.getContext("2d");
+				/*画布加图套路*/
+				var img = new Image();
+				img.src="img/a.png";
+				img.onload=function(){
+					draw(this);
+				}
+			}
+		/*先把整个图片放置在全部的屏幕中，添加
+				 * 手指触碰事件{
+				 * 点下去就获得手指的位置，
+				 * x、y = 手指在浏览器可视窗的位置-画布相对于浏览器的偏移量=手指的位置
+				 * 初始化画笔：先合成两张图片（destination-out），画笔的宽，加两边圆弧的横线
+				 * 横线是手指的位置（根据移动的不同）+1的横线，
+				 * 画线
+				 * 手指移动事件{
+				 * 	获得手指，以及画线，不用move，直接lineto
+				 * }
+				 * 手指结束抬起来的事件{
+				 * 	获得画布的数据对象，通过数据对象。获得所有的像素点
+				 * 遍历所有的像素点，把像素点的a值变成0，经过的就变0了imgData.data[4*i+3] == 0
+				 * 超过一半像素点变0，就全部变成透明
+				 * 加一个过渡事件之后{
+				 * 	让整个画布都消失。
+				 * }
+				 * }
+				 * }*/
+		     
+		     function draw(img){
+		     	ctx.drawImage(img,0,0,oc.width,oc.height);
+		     	
+		     	
+		     	oc.addEventListener('touchstart',function(ev){
+		     	ev = ev||event;
+		     	
+		     	var touchC = ev.changedTouches[0];
+		     	
+		     	var x = touchC.clientX-oc.offsetLeft;
+		     	var y = touchC.clientY-oc.offsetTop;
+		     	ctx.globalCompositeOperation='destination-out'
+		     	
+		     	ctx.save();
+		     	ctx.beginPath();
+		     	
+		     	ctx.arc(x,y,30,0,2*Math.PI);
+		     	ctx.fill();
+		     	ctx.restore();
+		     		
+		     		
+		     		
+		     	})
+		     	
+		     	oc.addEventListener('touchmove',function(ev){
+		     		var ev = ev||event;
+		     		var touchC = ev.changedTouches[0];
+		     		
+		     		var x = touchC.clientX-oc.offsetLeft;
+		     		var y = touchC.clientY-oc.offsetTop;
+		     		
+		     		ctx.save();
+		     		ctx.beginPath();
+		     		ctx.arc(x,y,40,0,2*Math.PI)
+		     		ctx.fill();
+		     		ctx.restore()
+		     
+		     	})
+		     	
+		     }
+		
+		
+		
+		
+		
+		
+		}
+	</script>
+</html>
