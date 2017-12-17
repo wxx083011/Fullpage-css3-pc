@@ -1,0 +1,376 @@
+/* v2.0 | 20110126
+  http://meyerweb.com/eric/tools/css/reset/ 
+  License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+/*头部 start*/
+.header {
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.7);
+}
+.header .inner {
+  width: 960px;
+  height: 60px;
+  margin: 0 auto;
+  line-height: 60px;
+}
+.header .inner .logo {
+  float: left;
+  margin-top: 15px;
+}
+.header .inner .menu li {
+  float: left;
+}
+.header .inner .menu li.active {
+  background: #fc0;
+  color: #000;
+}
+.header .inner .menu li a {
+  display: block;
+  text-decoration: none;
+  padding: 0 20px;
+  cursor: pointer;
+  color: #ffffff;
+}
+.header .inner .menu li a:hover {
+  background: #fc0;
+  color: #000;
+}
+/*头部 end*/
+.content {
+  transform-style: preserve-3d;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+@keyframes move1 {
+  0% {
+    transform: translate(330px, -1000px);
+  }
+  20% {
+    transform: translate(330px, 0);
+  }
+  40% {
+    transform: translate(330px, -50px);
+  }
+  60% {
+    transform: translate(330px, 0px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes move2 {
+  0% {
+    transform: translate(0, -1000px);
+  }
+  20% {
+    transform: translate(0, 0);
+  }
+  40% {
+    transform: translate(0, -50px);
+  }
+  60% {
+    transform: translate(0, 0px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+@keyframes move3 {
+  0% {
+    transform: translate(-330px, -1000px);
+  }
+  20% {
+    transform: translate(-330px, 0);
+  }
+  40% {
+    transform: translate(-330px, -50px);
+  }
+  60% {
+    transform: translate(-330px, 0px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.content .menuBar {
+  position: fixed;
+  right: 10px;
+  top: 50%;
+  z-index: 99;
+}
+.content .menuBar li {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid black;
+  margin-top: 10px;
+}
+.content .menuBar li.active {
+  background: black;
+}
+.content .list {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /*头部过渡的时候加一个*/
+  transition: 1s top;
+}
+.content .list > li {
+  display: block;
+}
+.content .list .left {
+  position: absolute;
+  top: 50%;
+  margin-top: -200px;
+  left: 5%;
+  z-index: 3;
+}
+.content .list .left li {
+  float: left;
+  margin-right: 20px;
+}
+.content .list .left li p {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #333;
+  z-index: 3;
+}
+.content .list .left li a {
+  width: 98px;
+  height: 36px;
+  background: url(../img/buy.jpg);
+  display: block;
+}
+.content .list .right {
+  position: absolute;
+  right: 5%;
+  border-right: 2px solid #000000;
+  padding-right: 10px;
+  text-align: right;
+  top: 15%;
+  z-index: 3;
+  transition: 0.8s;
+}
+.content .list .right h1 {
+  font-size: 34px;
+  color: #333;
+  font-weight: 100;
+  z-index: 2;
+}
+.content .list .right p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.5em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  z-index: 3;
+}
+.content .list .right a {
+  color: #333;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.content .list .right a:hover {
+  text-decoration: none;
+}
+.content .list .bg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.content .list .page1 {
+  z-index: 5;
+  position: relative;
+  overflow: hidden;
+  background: url(../img/s1.jpg);
+}
+.content .list .page1 img {
+  transition: 0.8s opacity;
+  position: absolute;
+  opacity: 0;
+  top: 30px;
+  left: 50px;
+}
+.content .list .page2 {
+  z-index: 5;
+  position: relative;
+  overflow: hidden;
+  background: url(../img/s2.jpg);
+}
+.content .list .page2 li {
+  transition: 1s;
+}
+.content .list .page2 .right {
+  transition: 1.5s;
+}
+.content .list .page3 {
+  z-index: 15;
+  position: relative;
+  background: url(../img/s3.jpg);
+}
+.content .list .page3 li {
+  transition: 2s;
+}
+.content .list .page3 .right {
+  transition: 2.5s;
+}
+.content .list .page4 {
+  z-index: 5;
+  position: relative;
+  background: url(../img/s4.jpg);
+}
+.content .list .page4 li {
+  transition: 1s;
+}
+.content .list .page4 .right {
+  transition: 1.5s;
+}
+.content .list .page5 {
+  z-index: 5;
+  perspective: 500px
+             position: relative;
+  background: url(../img/s5.jpg);
+  transform-style: preserve-3d;
+}
+.content .list .page5 li {
+  transition: 1s;
+}
+.content .list .page5 .right {
+  transition: 2s;
+}
